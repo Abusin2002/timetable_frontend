@@ -30,7 +30,7 @@ const CreateTimeTable = () => {
   useEffect(() => {
     const fetchClasses = async () => {
       try {
-        const token = localStorage.getItem("token");
+        const token = sessionStorage.getItem("token");
         const res = await api.get("/classes/my", {
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -64,7 +64,7 @@ const CreateTimeTable = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const token = localStorage.getItem("token");
+      const token = sessionStorage.getItem("token");
       const res = await api.post("/tt", form, {
         headers: {
           Authorization: `Bearer ${token}`,

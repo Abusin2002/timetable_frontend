@@ -9,7 +9,7 @@ const AddClass = () => {
     e.preventDefault();
 
     try {
-      const token = localStorage.getItem("token");
+      const token = sessionStorage.getItem("token");
 
       const res = await api.post(
         "/classes/create",

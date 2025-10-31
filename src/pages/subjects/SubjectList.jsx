@@ -19,7 +19,7 @@ const [activeView, setActiveView] = useState("");
  const fetchSubjects = async () => {
     try {
       setLoading(true);
-      const token = localStorage.getItem("token");
+      const token = sessionStorage.getItem("token");
 
       const res = await api.get("/subjects", {
         headers: {

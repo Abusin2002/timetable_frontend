@@ -21,7 +21,7 @@ const AddStaff = () => {
     e.preventDefault();
 
     try {
-      const token = localStorage.getItem("token"); // get JWT token from localStorage
+      const token = sessionStorage.getItem("token"); // get JWT token from sessionStorage
 
       const res = await api.post(
         "/staffs",

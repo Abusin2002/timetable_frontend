@@ -15,7 +15,7 @@ const TimeTablePage = () => {
   useEffect(() => {
     const fetchClasses = async () => {
       try {
-        const token = localStorage.getItem("token");
+        const token = sessionStorage.getItem("token");
         const res = await api.get("/classes/my", {
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -42,7 +42,7 @@ useEffect(() => {
 
   const fetchTimeTable = async () => {
     try {
-      const token = localStorage.getItem("token");
+      const token = sessionStorage.getItem("token");
       const res = await api.get(`/tt/${selectedClass}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -134,7 +134,7 @@ const [formData, setFormData] = useState({
 // fetch subjects & staffs
 useEffect(() => {
   const fetchData = async () => {
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
     try {
       const [subRes, staffRes] = await Promise.all([
         api.get("/subjects", { headers: { Authorization: `Bearer ${token}` } }),
@@ -159,7 +159,7 @@ const handleCellClick = (day, periodNumber) => {
 // handle save
 const handleSave = async () => {
   try {
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
     const payload = {
       classId: selectedClass._id,
       weekday: selectedPeriod.day,
@@ -199,7 +199,7 @@ useEffect(() => {
 
   const fetchEntries = async () => {
     try {
-      const token = localStorage.getItem("token");
+      const token = sessionStorage.getItem("token");
       const res = await api.get(`/ttentry?classId=${selectedClass._id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });

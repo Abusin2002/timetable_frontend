@@ -10,7 +10,7 @@ const AddSubject = () => {
   const handleSubmit = async(e) => {
     e.preventDefault();
     try{
-        const token = localStorage.getItem("token");
+        const token = sessionStorage.getItem("token");
         const res=await api.post("/subjects", 
             { name: subjectName,
                code:subjectCode,

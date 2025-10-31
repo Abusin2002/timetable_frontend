@@ -15,7 +15,7 @@ const TopBar = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const token = localStorage.getItem("token");
+        const token = sessionStorage.getItem("token");
         if (!token) {
           toast.warning("Please log in to view your profile");
           return;
@@ -34,7 +34,7 @@ const TopBar = () => {
   }, []); 
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
+    sessionStorage.removeItem("token");
     navigate("/login");
   };
 

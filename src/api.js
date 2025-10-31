@@ -2,10 +2,11 @@ import axios from "axios";
 
 const api = axios.create({
   baseURL: "https://timetable-backend-e778.onrender.com/api", 
+  // baseURL: "http://localhost:5000/api", 
 });
 
 api.interceptors.request.use((config) => {
-  const token = localStorage.getItem("token");
+  const token = sessionStorage.getItem("token");
   if (token) config.headers.Authorization = `Bearer ${token}`;
   return config;
 });
@@ -13,13 +14,13 @@ api.interceptors.request.use((config) => {
 
 export const registerUser = async (name, email, password) => {
   const { data } = await api.post("/users/register", { name, email, password });
-  localStorage.setItem("token", data.token);
+  sessionStorage.setItem("token", data.token);
   return data;
 };
 
 export const loginUser = async (email, password) => {
   const { data } = await api.post("/users/login", { email, password });
-  localStorage.setItem("token", data.token);
+  sessionStorage.setItem("token", data.token);
   return data;
 };
 

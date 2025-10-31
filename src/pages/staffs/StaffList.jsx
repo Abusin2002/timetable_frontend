@@ -27,7 +27,7 @@ const ListStaffs = () => {
 
   const fetchStaffs = useCallback(async () => {
     try {
-      const token = localStorage.getItem("token");
+      const token = sessionStorage.getItem("token");
 
       const res = await api.get("/staffs", {
         headers: { Authorization: `Bearer ${token}` },

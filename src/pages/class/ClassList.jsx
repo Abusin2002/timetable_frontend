@@ -17,7 +17,7 @@ const ListClasses = () => {
   useEffect(() => {
     const fetchClasses = async () => {
       try {
-        const token = localStorage.getItem("token");
+        const token = sessionStorage.getItem("token");
         const res = await api.get("/classes/my", {
           headers: { Authorization: `Bearer ${token}` },
         });

@@ -4,7 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { loginUser } from "../api";
 
 export default function Login() {
-  const { login } = useContext(AuthContext);
+  // const { login } = useContext(AuthContext);
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,7 +16,7 @@ export default function Login() {
     e.preventDefault();
     try {
       const res=await loginUser(email, password);
-      localStorage.setItem("token", res.token);
+      sessionStorage.setItem("token", res.token);
       navigate("/dashboard");
     } catch (err) {
       setError(err.response?.data?.message || "Login failed");
